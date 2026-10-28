@@ -1,0 +1,34 @@
+{
+  "name": "answer_finance_question",
+  "description": "Call this for EVERY question about Indian savings scheme rates (PPF, Sukanya Samriddhi, SCSS, NSC, KVP), the RBI repo rate, TDS on FD interest, income tax slabs, tax-free limits, deductions (Section 123 / old 80C, NPS), how much tax someone pays, whether the old or new tax regime is better for them, or how much HRA exemption they get. It returns a checked answer with sourced figures.",
+  "pre_call_message": "Ek second, main sahi aankde dekh raha hoon.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "question": {
+        "type": "string",
+        "description": "The caller's question in their own words and language, including any income, deductions, age, basic salary, HRA, rent and city they mentioned."
+      },
+      "style": {
+        "type": "string",
+        "description": "The caller's preferred talking style as comma-separated words, if known: 'brief' or 'detailed', 'friendly' or 'formal', 'lively' or 'calm'. Example: 'brief,friendly'. Leave empty if not known."
+      }
+    },
+    "required": [
+      "question"
+    ]
+  },
+  "key": "custom_task",
+  "value": {
+    "method": "POST",
+    "param": {
+      "question": "%(question)s",
+      "style": "%(style)s"
+    },
+    "url": "https://YOUR-PUBLIC-URL/bolna/answer",
+    "api_token": "Bearer YOUR_BOLNA_TOKEN",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

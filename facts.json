@@ -1,0 +1,1082 @@
+{
+  "_readme": "Every figure the assistant may speak. Each fact needs sources, period, valid_until. Sources marked type=primary are official (RBI, DEA); others are secondary sites that agree. Edit values here, never in code. Last research pass: 2026-10-19.",
+  "facts": [
+    {
+      "id": "ppf_rate",
+      "title": "PPF interest rate",
+      "match": [
+        [
+          [
+            "ppf",
+            "public provident",
+            "पीपीएफ",
+            "पब्लिक प्रोविडेंट"
+          ],
+          [
+            "rate",
+            "interest",
+            "return",
+            "ब्याज",
+            "दर",
+            "रिटर्न",
+            "इंटरेस्ट"
+          ]
+        ]
+      ],
+      "values": {
+        "rate": "7.1%"
+      },
+      "period": {
+        "en": "the October to December 2026 quarter",
+        "hi": "अक्टूबर से दिसंबर 2026 तिमाही"
+      },
+      "say": {
+        "en": "The PPF interest rate is {rate} a year for the October to December 2026 quarter.",
+        "hi": "अक्टूबर से दिसंबर 2026 तिमाही के लिए PPF की ब्याज दर {rate} सालाना है।"
+      },
+      "valid_until": "2026-12-31",
+      "confidence": "multi-source",
+      "sources": [
+        {
+          "name": "DEA, Ministry of Finance: Small Savings page (lists the Q3 FY2026-27 notification; PDF not read)",
+          "url": "https://dea.gov.in/budget-division/475",
+          "type": "primary"
+        },
+        {
+          "name": "Business Today, 30 Sep 2026",
+          "url": "https://www.businesstoday.in/personal-finance/story/small-savings-scheme-interest-rates-unchanged-for-q3-fy27-check-ppf-scss-ssy-rates-558892-2026-09-30",
+          "type": "secondary"
+        },
+        {
+          "name": "Angel One",
+          "url": "https://www.angelone.in/news/personal-finance/finance-minister-announces-small-savings-interest-rates-for-october-december-2026-quarter",
+          "type": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "ssy_rate",
+      "title": "Sukanya Samriddhi Yojana interest rate",
+      "match": [
+        [
+          [
+            "sukanya",
+            "ssy",
+            "सुकन्या"
+          ],
+          [
+            "rate",
+            "interest",
+            "return",
+            "ब्याज",
+            "दर",
+            "रिटर्न",
+            "इंटरेस्ट"
+          ]
+        ]
+      ],
+      "values": {
+        "rate": "8.2%"
+      },
+      "period": {
+        "en": "the October to December 2026 quarter",
+        "hi": "अक्टूबर से दिसंबर 2026 तिमाही"
+      },
+      "say": {
+        "en": "Sukanya Samriddhi Yojana pays {rate} a year for the October to December 2026 quarter.",
+        "hi": "अक्टूबर से दिसंबर 2026 तिमाही के लिए सुकन्या समृद्धि योजना की ब्याज दर {rate} सालाना है।"
+      },
+      "valid_until": "2026-12-31",
+      "confidence": "multi-source",
+      "sources": [
+        {
+          "name": "DEA, Ministry of Finance: Small Savings page (lists the Q3 FY2026-27 notification; PDF not read)",
+          "url": "https://dea.gov.in/budget-division/475",
+          "type": "primary"
+        },
+        {
+          "name": "Business Today, 30 Sep 2026",
+          "url": "https://www.businesstoday.in/personal-finance/story/small-savings-scheme-interest-rates-unchanged-for-q3-fy27-check-ppf-scss-ssy-rates-558892-2026-09-30",
+          "type": "secondary"
+        },
+        {
+          "name": "PaisaMarket",
+          "url": "https://paisamarket.in/learn/government-schemes/small-savings-interest-rate-unchanged/",
+          "type": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "scss_rate",
+      "title": "Senior Citizens Savings Scheme interest rate",
+      "match": [
+        [
+          [
+            "scss",
+            "senior citizen savings",
+            "senior citizens savings",
+            "senior citizen saving",
+            "सीनियर सिटीजन सेविंग",
+            "वरिष्ठ नागरिक बचत"
+          ],
+          [
+            "rate",
+            "interest",
+            "return",
+            "ब्याज",
+            "दर",
+            "रिटर्न",
+            "इंटरेस्ट"
+          ]
+        ]
+      ],
+      "values": {
+        "rate": "8.2%"
+      },
+      "period": {
+        "en": "the October to December 2026 quarter",
+        "hi": "अक्टूबर से दिसंबर 2026 तिमाही"
+      },
+      "say": {
+        "en": "The Senior Citizens Savings Scheme pays {rate} a year for the October to December 2026 quarter.",
+        "hi": "अक्टूबर से दिसंबर 2026 तिमाही के लिए सीनियर सिटीजन सेविंग्स स्कीम की ब्याज दर {rate} सालाना है।"
+      },
+      "valid_until": "2026-12-31",
+      "confidence": "multi-source",
+      "sources": [
+        {
+          "name": "DEA, Ministry of Finance: Small Savings page (lists the Q3 FY2026-27 notification; PDF not read)",
+          "url": "https://dea.gov.in/budget-division/475",
+          "type": "primary"
+        },
+        {
+          "name": "Business Today, 30 Sep 2026",
+          "url": "https://www.businesstoday.in/personal-finance/story/small-savings-scheme-interest-rates-unchanged-for-q3-fy27-check-ppf-scss-ssy-rates-558892-2026-09-30",
+          "type": "secondary"
+        },
+        {
+          "name": "PaisaMarket",
+          "url": "https://paisamarket.in/learn/government-schemes/small-savings-interest-rate-unchanged/",
+          "type": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "nsc_rate",
+      "title": "National Savings Certificate interest rate",
+      "match": [
+        [
+          [
+            "nsc",
+            "national savings certificate",
+            "एनएससी",
+            "राष्ट्रीय बचत पत्र"
+          ],
+          [
+            "rate",
+            "interest",
+            "return",
+            "ब्याज",
+            "दर",
+            "रिटर्न",
+            "इंटरेस्ट"
+          ]
+        ]
+      ],
+      "values": {
+        "rate": "7.7%"
+      },
+      "period": {
+        "en": "the October to December 2026 quarter",
+        "hi": "अक्टूबर से दिसंबर 2026 तिमाही"
+      },
+      "say": {
+        "en": "The National Savings Certificate pays {rate} a year for the October to December 2026 quarter.",
+        "hi": "अक्टूबर से दिसंबर 2026 तिमाही के लिए NSC की ब्याज दर {rate} सालाना है।"
+      },
+      "valid_until": "2026-12-31",
+      "confidence": "multi-source",
+      "sources": [
+        {
+          "name": "DEA, Ministry of Finance: Small Savings page (lists the Q3 FY2026-27 notification; PDF not read)",
+          "url": "https://dea.gov.in/budget-division/475",
+          "type": "primary"
+        },
+        {
+          "name": "Business Today, 30 Sep 2026",
+          "url": "https://www.businesstoday.in/personal-finance/story/small-savings-scheme-interest-rates-unchanged-for-q3-fy27-check-ppf-scss-ssy-rates-558892-2026-09-30",
+          "type": "secondary"
+        },
+        {
+          "name": "Angel One",
+          "url": "https://www.angelone.in/news/personal-finance/finance-minister-announces-small-savings-interest-rates-for-october-december-2026-quarter",
+          "type": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "kvp_rate",
+      "title": "Kisan Vikas Patra interest rate",
+      "match": [
+        [
+          [
+            "kvp",
+            "kisan vikas",
+            "किसान विकास"
+          ],
+          [
+            "rate",
+            "interest",
+            "return",
+            "ब्याज",
+            "दर",
+            "रिटर्न",
+            "इंटरेस्ट"
+          ]
+        ]
+      ],
+      "values": {
+        "rate": "7.5%"
+      },
+      "period": {
+        "en": "the October to December 2026 quarter",
+        "hi": "अक्टूबर से दिसंबर 2026 तिमाही"
+      },
+      "say": {
+        "en": "Kisan Vikas Patra pays {rate} a year for the October to December 2026 quarter.",
+        "hi": "अक्टूबर से दिसंबर 2026 तिमाही के लिए किसान विकास पत्र की ब्याज दर {rate} सालाना है।"
+      },
+      "valid_until": "2026-12-31",
+      "confidence": "multi-source",
+      "sources": [
+        {
+          "name": "DEA, Ministry of Finance: Small Savings page (lists the Q3 FY2026-27 notification; PDF not read)",
+          "url": "https://dea.gov.in/budget-division/475",
+          "type": "primary"
+        },
+        {
+          "name": "Trade Brains",
+          "url": "https://tradebrains.in/money/small-savings-schemes-2026-ppf-sukanya-scss-more-check-current-interest-rates-for-oct-dec-2026-12636549",
+          "type": "secondary"
+        },
+        {
+          "name": "BlinkMoney (rate card citing the DEA notification)",
+          "url": "https://blinkmoney.in/news/small-savings-rates-unchanged-for-october-december-2026-ppf-at-7-1-nsc-at-7-7-ssy-and-scss-at-8-2",
+          "type": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "ppf_deposit_limit",
+      "title": "PPF deposit limits",
+      "match": [
+        [
+          [
+            "ppf",
+            "public provident",
+            "पीपीएफ"
+          ],
+          [
+            "limit",
+            "maximum",
+            "max",
+            "minimum",
+            "deposit",
+            "invest",
+            "जमा",
+            "लिमिट",
+            "सीमा",
+            "ज़्यादा से ज़्यादा",
+            "ज्यादा से ज्यादा",
+            "कम से कम"
+          ]
+        ]
+      ],
+      "values": {
+        "min": "₹500",
+        "max": "₹1.5 lakh"
+      },
+      "period": {
+        "en": "each financial year",
+        "hi": "हर वित्त वर्ष"
+      },
+      "say": {
+        "en": "In PPF you can deposit a minimum of {min} and a maximum of {max} in a financial year.",
+        "hi": "PPF में एक वित्त वर्ष में कम से कम {min} और ज़्यादा से ज़्यादा {max} जमा कर सकते हैं।"
+      },
+      "valid_until": "2027-03-31",
+      "confidence": "single-source",
+      "sources": [
+        {
+          "name": "ClearTax",
+          "url": "https://cleartax.in/s/ppf",
+          "type": "secondary"
+        }
+      ],
+      "values_hi": {
+        "max": "₹1.5 लाख"
+      }
+    },
+    {
+      "id": "new_regime_tax_free",
+      "title": "New regime: tax-free income limit",
+      "match": [
+        [
+          [
+            "new regime",
+            "new tax regime",
+            "new tax",
+            "नई टैक्स",
+            "नई कर",
+            "न्यू टैक्स",
+            "न्यू रिजीम"
+          ],
+          [
+            "tax free",
+            "tax-free",
+            "no tax",
+            "zero tax",
+            "rebate",
+            "exempt",
+            "टैक्स नहीं",
+            "कर नहीं",
+            "टैक्स फ्री",
+            "रिबेट"
+          ]
+        ],
+        [
+          [
+            "12 lakh",
+            "12 लाख",
+            "12.75",
+            "87a",
+            "rebate",
+            "रिबेट"
+          ],
+          [
+            "tax",
+            "टैक्स",
+            "कर"
+          ]
+        ]
+      ],
+      "values": {
+        "limit": "₹12 lakh",
+        "rebate": "₹60,000",
+        "salary_limit": "₹12.75 lakh",
+        "std": "₹75,000"
+      },
+      "period": {
+        "en": "tax year 2026-27",
+        "hi": "टैक्स ईयर 2026-27"
+      },
+      "say": {
+        "en": "In the new tax regime for tax year 2026-27, a resident individual pays no tax on taxable income up to {limit}, because of a rebate of up to {rebate}. With the {std} standard deduction, salary or pension up to {salary_limit} is tax-free. The rebate does not cover tax on special-rate income such as long-term capital gains on shares.",
+        "hi": "टैक्स ईयर 2026-27 में नई टैक्स व्यवस्था में {limit} तक की टैक्सेबल आय पर कोई टैक्स नहीं लगता, क्योंकि {rebate} तक की छूट मिलती है। {std} के स्टैंडर्ड डिडक्शन के साथ {salary_limit} तक की सैलरी या पेंशन टैक्स फ्री है। यह रिबेट शेयरों पर लॉन्ग टर्म कैपिटल गेन जैसी स्पेशल रेट वाली आय के टैक्स पर नहीं मिलती।"
+      },
+      "valid_until": "2027-03-31",
+      "confidence": "multi-source",
+      "sources": [
+        {
+          "name": "Filingbase",
+          "url": "https://filingbase.in/new-tax-regime-slabs/",
+          "type": "secondary"
+        },
+        {
+          "name": "TaxBadi",
+          "url": "https://www.taxbadi.com/tax-slabs-2026-27/",
+          "type": "secondary"
+        },
+        {
+          "name": "TaxGuru: Section 156 is the new Section 87A",
+          "url": "https://taxguru.in/income-tax/section-156-section-87a-changed-didnt.html",
+          "type": "secondary"
+        },
+        {
+          "name": "TaxGuru: rebate not available against LTCG tax (s.112A / s.198)",
+          "url": "https://taxguru.in/income-tax/section-87a-section-156-rebate-tax-payable-rs-12-lakh.html",
+          "type": "secondary"
+        }
+      ],
+      "values_hi": {
+        "limit": "₹12 लाख",
+        "salary_limit": "₹12.75 लाख"
+      },
+      "note": "Rebate is Section 156 of the Income-tax Act, 2025 (old 87A); confirmed by several mapping tables. 157 is arrears relief, not the rebate."
+    },
+    {
+      "id": "new_regime_std_deduction",
+      "title": "New regime: standard deduction",
+      "match": [
+        [
+          [
+            "standard deduction",
+            "स्टैंडर्ड डिडक्शन",
+            "मानक कटौती"
+          ]
+        ]
+      ],
+      "values": {
+        "std": "₹75,000"
+      },
+      "period": {
+        "en": "tax year 2026-27",
+        "hi": "टैक्स ईयर 2026-27"
+      },
+      "say": {
+        "en": "Under the new tax regime for tax year 2026-27, salaried people and pensioners get a standard deduction of {std}.",
+        "hi": "टैक्स ईयर 2026-27 में नई टैक्स व्यवस्था में सैलरी पाने वालों और पेंशनर्स को {std} का स्टैंडर्ड डिडक्शन मिलता है।"
+      },
+      "valid_until": "2027-03-31",
+      "confidence": "multi-source",
+      "sources": [
+        {
+          "name": "TaxBadi",
+          "url": "https://www.taxbadi.com/tax-slabs-2026-27/",
+          "type": "secondary"
+        },
+        {
+          "name": "Filingbase",
+          "url": "https://filingbase.in/new-tax-regime-slabs/",
+          "type": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "new_regime_slabs",
+      "title": "New regime: tax slabs",
+      "match": [
+        [
+          [
+            "slab",
+            "slabs",
+            "स्लैब",
+            "tax rate",
+            "tax rates",
+            "टैक्स दर",
+            "टैक्स रेट"
+          ]
+        ]
+      ],
+      "values": {
+        "slabs_en": "nil up to ₹4 lakh, 5% from ₹4 to ₹8 lakh, 10% from ₹8 to ₹12 lakh, 15% from ₹12 to ₹16 lakh, 20% from ₹16 to ₹20 lakh, 25% from ₹20 to ₹24 lakh, and 30% above ₹24 lakh",
+        "slabs_hi": "₹4 लाख तक शून्य, ₹4 से ₹8 लाख पर 5%, ₹8 से ₹12 लाख पर 10%, ₹12 से ₹16 लाख पर 15%, ₹16 से ₹20 लाख पर 20%, ₹20 से ₹24 लाख पर 25%, और ₹24 लाख से ऊपर 30%"
+      },
+      "period": {
+        "en": "tax year 2026-27",
+        "hi": "टैक्स ईयर 2026-27"
+      },
+      "say": {
+        "en": "The new tax regime slabs for tax year 2026-27 are: {slabs_en}.",
+        "hi": "टैक्स ईयर 2026-27 के लिए नई टैक्स व्यवस्था के स्लैब हैं: {slabs_hi}।"
+      },
+      "valid_until": "2027-03-31",
+      "confidence": "multi-source",
+      "sources": [
+        {
+          "name": "Income Tax Department e-filing: tax slabs for AY 2026-27 (prior year, same new-regime slabs)",
+          "url": "https://www.incometax.gov.in/iec/foportal/help/individual/return-applicable-0",
+          "type": "primary"
+        },
+        {
+          "name": "Filingbase",
+          "url": "https://filingbase.in/new-tax-regime-slabs/",
+          "type": "secondary"
+        },
+        {
+          "name": "ClearTax",
+          "url": "https://cleartax.in/s/income-tax-slabs",
+          "type": "secondary"
+        }
+      ],
+      "note": "Official page found is for AY 2026-27 (1961 Act). Several sources say the same slabs apply in TY 2026-27 under s.202(1) of the 2025 Act."
+    },
+    {
+      "id": "sec123_limit",
+      "title": "Section 123 (old Section 80C) deduction limit",
+      "match": [
+        [
+          [
+            "80c",
+            "80 c",
+            "section 123",
+            "धारा 123",
+            "सेक्शन 123",
+            "80सी",
+            "80 सी"
+          ]
+        ],
+        [
+          [
+            "deduction",
+            "कटौती",
+            "डिडक्शन",
+            "छूट"
+          ],
+          [
+            "ppf",
+            "elss",
+            "lic",
+            "life insurance",
+            "tax saving",
+            "टैक्स बचत",
+            "टैक्स सेविंग",
+            "बीमा"
+          ]
+        ]
+      ],
+      "values": {
+        "limit": "₹1.5 lakh"
+      },
+      "period": {
+        "en": "tax year 2026-27",
+        "hi": "टैक्स ईयर 2026-27"
+      },
+      "say": {
+        "en": "From tax year 2026-27, the old Section 80C deduction is Section 123 of the Income-tax Act, 2025. The limit is still {limit} a year, and it is available only in the old tax regime.",
+        "hi": "टैक्स ईयर 2026-27 से पुराना सेक्शन 80C अब इनकम टैक्स एक्ट 2025 का सेक्शन 123 है। इसकी सीमा अब भी {limit} सालाना है, और यह सिर्फ पुरानी टैक्स व्यवस्था में मिलती है।"
+      },
+      "valid_until": "2027-03-31",
+      "confidence": "multi-source",
+      "sources": [
+        {
+          "name": "CalcGuru",
+          "url": "https://calcguru.in/section-80c-now-section-123-deductions-fy-2026-27/",
+          "type": "secondary"
+        },
+        {
+          "name": "EaseValue",
+          "url": "https://easevalue.com/income-tax-act-2025/section-123",
+          "type": "secondary"
+        }
+      ],
+      "values_hi": {
+        "limit": "₹1.5 लाख"
+      }
+    },
+    {
+      "id": "nps_extra",
+      "title": "Extra NPS deduction (old 80CCD(1B))",
+      "match": [
+        [
+          [
+            "nps",
+            "एनपीएस",
+            "national pension"
+          ],
+          [
+            "extra",
+            "additional",
+            "deduction",
+            "कटौती",
+            "डिडक्शन",
+            "छूट",
+            "अतिरिक्त",
+            "एक्स्ट्रा"
+          ]
+        ]
+      ],
+      "values": {
+        "extra": "₹50,000",
+        "base": "₹1.5 lakh"
+      },
+      "period": {
+        "en": "tax year 2026-27",
+        "hi": "टैक्स ईयर 2026-27"
+      },
+      "say": {
+        "en": "In the old tax regime, your own NPS contributions get an extra deduction of up to {extra}, on top of the {base} Section 123 limit. This was Section 80CCD(1B) under the old Act.",
+        "hi": "पुरानी टैक्स व्यवस्था में NPS में अपने निवेश पर सेक्शन 123 की {base} सीमा के ऊपर {extra} तक का अतिरिक्त डिडक्शन मिलता है। पुराने एक्ट में यह सेक्शन 80CCD(1B) था।"
+      },
+      "valid_until": "2027-03-31",
+      "confidence": "multi-source",
+      "sources": [
+        {
+          "name": "EaseValue",
+          "url": "https://easevalue.com/income-tax-act-2025/section-123",
+          "type": "secondary"
+        },
+        {
+          "name": "CalcGuru",
+          "url": "https://calcguru.in/section-80c-now-section-123-deductions-fy-2026-27/",
+          "type": "secondary"
+        }
+      ],
+      "values_hi": {
+        "base": "₹1.5 लाख"
+      },
+      "note": "New-Act section number omitted: sources disagree (124(3) vs 125)."
+    },
+    {
+      "id": "old_regime_rebate",
+      "title": "Old regime: rebate limit",
+      "match": [
+        [
+          [
+            "old regime",
+            "old tax",
+            "पुरानी टैक्स",
+            "पुरानी कर",
+            "ओल्ड रिजीम"
+          ],
+          [
+            "tax free",
+            "tax-free",
+            "no tax",
+            "rebate",
+            "exempt",
+            "टैक्स नहीं",
+            "टैक्स फ्री",
+            "रिबेट"
+          ]
+        ]
+      ],
+      "values": {
+        "rebate": "₹12,500",
+        "limit": "₹5 lakh"
+      },
+      "period": {
+        "en": "tax year 2026-27",
+        "hi": "टैक्स ईयर 2026-27"
+      },
+      "say": {
+        "en": "In the old tax regime, a resident individual gets a rebate of up to {rebate} if taxable income is up to {limit}, so there is no tax up to that income.",
+        "hi": "पुरानी टैक्स व्यवस्था में {limit} तक की टैक्सेबल आय पर {rebate} तक की छूट मिलती है, इसलिए उस आय तक कोई टैक्स नहीं लगता।"
+      },
+      "valid_until": "2027-03-31",
+      "confidence": "multi-source",
+      "sources": [
+        {
+          "name": "TaxBadi",
+          "url": "https://www.taxbadi.com/tax-slabs-2026-27/",
+          "type": "secondary"
+        },
+        {
+          "name": "ClearTax",
+          "url": "https://cleartax.in/s/income-tax-slabs",
+          "type": "secondary"
+        }
+      ],
+      "values_hi": {
+        "limit": "₹5 लाख"
+      }
+    },
+    {
+      "id": "repo_rate",
+      "title": "RBI repo rate",
+      "match": [
+        [
+          [
+            "repo",
+            "रेपो"
+          ]
+        ]
+      ],
+      "values": {
+        "rate": "5.50%",
+        "prev": "5.25%"
+      },
+      "period": {
+        "en": "the RBI policy of 7 October 2026",
+        "hi": "7 अक्टूबर 2026 की RBI पॉलिसी"
+      },
+      "say": {
+        "en": "The RBI repo rate is {rate}. The RBI raised it from {prev} on 7 October 2026.",
+        "hi": "RBI का रेपो रेट {rate} है। RBI ने 7 अक्टूबर 2026 को इसे {prev} से बढ़ाया।"
+      },
+      "valid_until": "2026-12-01",
+      "confidence": "primary",
+      "note": "valid_until set conservatively to before the next MPC meeting; the exact next meeting date is unverified.",
+      "sources": [
+        {
+          "name": "RBI press release, Monetary Policy Statement, 7 Oct 2026",
+          "url": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63742",
+          "type": "primary"
+        },
+        {
+          "name": "SCC Online, 9 Oct 2026",
+          "url": "https://www.scconline.com/blog/post/2026/10/09/rbi-hikes-repo-rate-to-5-50-percent-october-2026/",
+          "type": "secondary"
+        },
+        {
+          "name": "CAclubindia",
+          "url": "https://www.caclubindia.com/news/rbi-hikes-repo-rate-by-25-basis-points-to-5-50-percent-in-october-2026-26858.asp",
+          "type": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "fd_tds",
+      "title": "TDS on FD interest",
+      "match": [
+        [
+          [
+            "fd",
+            "fixed deposit",
+            "एफडी",
+            "फिक्स्ड डिपॉजिट",
+            "बैंक"
+          ],
+          [
+            "tds",
+            "टीडीएस"
+          ]
+        ],
+        [
+          [
+            "15g",
+            "15h",
+            "form 121",
+            "फॉर्म 121",
+            "15 g",
+            "15 h"
+          ]
+        ]
+      ],
+      "values": {
+        "rate": "10%",
+        "general": "₹50,000",
+        "senior": "₹1 lakh",
+        "nopan": "20%"
+      },
+      "values_hi": {
+        "senior": "₹1 लाख"
+      },
+      "period": {
+        "en": "tax year 2026-27",
+        "hi": "टैक्स ईयर 2026-27"
+      },
+      "say": {
+        "en": "For tax year 2026-27, a bank deducts TDS of {rate} on FD interest only if your interest from that bank in the year is more than {general}, or more than {senior} for senior citizens. Without PAN, the rate is {nopan}. Under the new Act this is Section 393, and Form 121 replaces Forms 15G and 15H.",
+        "hi": "टैक्स ईयर 2026-27 में बैंक FD के ब्याज पर {rate} TDS तभी काटता है जब उस बैंक से साल का ब्याज {general} से ज़्यादा हो, और सीनियर सिटीजन के लिए {senior} से ज़्यादा। PAN न देने पर दर {nopan} है। नए एक्ट में यह सेक्शन 393 है, और फॉर्म 15G और 15H की जगह अब फॉर्म 121 है।"
+      },
+      "valid_until": "2027-03-31",
+      "confidence": "multi-source",
+      "sources": [
+        {
+          "name": "TaxGarden",
+          "url": "https://taxgarden.in/blog/tds-on-bank-fd-interest-fy-2026-27",
+          "type": "secondary"
+        },
+        {
+          "name": "CAclubindia",
+          "url": "https://www.caclubindia.com/articles/tds-on-fixed-deposit-interest-54910.asp",
+          "type": "secondary"
+        },
+        {
+          "name": "Arthzo (Form 121)",
+          "url": "https://arthzo.com/tax-on-fd-interest-in-india/",
+          "type": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "hra_metro_cities",
+      "title": "HRA: which cities get 50%",
+      "match": [
+        [
+          [
+            "hra",
+            "house rent allowance",
+            "एचआरए"
+          ],
+          [
+            "metro",
+            "city",
+            "cities",
+            "50%",
+            "50 %",
+            "शहर",
+            "मेट्रो"
+          ]
+        ]
+      ],
+      "values": {
+        "metro": "50%",
+        "other": "40%"
+      },
+      "period": {
+        "en": "tax year 2026-27",
+        "hi": "टैक्स ईयर 2026-27"
+      },
+      "say": {
+        "en": "From tax year 2026-27, HRA exemption uses {metro} of basic salary plus DA in eight cities: Mumbai, Delhi, Kolkata, Chennai, Bengaluru, Hyderabad, Pune and Ahmedabad. Everywhere else it is {other}. The exemption is the lowest of the HRA you receive, that percentage of salary, or rent paid minus 10% of salary, and it applies only in the old regime.",
+        "hi": "टैक्स ईयर 2026-27 से आठ शहरों में HRA छूट बेसिक सैलरी और DA के {metro} पर गिनी जाती है: मुंबई, दिल्ली, कोलकाता, चेन्नई, बेंगलुरु, हैदराबाद, पुणे और अहमदाबाद। बाकी जगह यह {other} है। छूट इन तीनों में से सबसे कम होती है: मिलने वाला HRA, सैलरी का यह प्रतिशत, या किराया घटाकर सैलरी का 10%, और यह सिर्फ पुरानी व्यवस्था में मिलती है।"
+      },
+      "valid_until": "2027-03-31",
+      "confidence": "multi-source",
+      "sources": [
+        {
+          "name": "TaxGuru: HRA, 8 cities now qualify for 50%",
+          "url": "https://taxguru.in/income-tax/hra-exemption-8-cities-qualify-50-percent-exemption-practical-guide.html",
+          "type": "secondary"
+        },
+        {
+          "name": "TaxFetch: Rule 279, Income-tax Rules 2026 (notified 20 Mar 2026)",
+          "url": "https://www.taxfetchindia.com/blog/taxation-time/hra-exemption-rules-april-2026-new-cities",
+          "type": "secondary"
+        },
+        {
+          "name": "EZHRM: least-of-three formula",
+          "url": "https://ezhrm.in/hra-exemption-2026-metro-cities-ctc-calculator/",
+          "type": "secondary"
+        }
+      ]
+    }
+  ],
+  "tax_calculator": {
+    "title": "New regime tax estimate (tax year 2026-27)",
+    "slabs": [
+      [
+        400000,
+        0.0
+      ],
+      [
+        800000,
+        0.05
+      ],
+      [
+        1200000,
+        0.1
+      ],
+      [
+        1600000,
+        0.15
+      ],
+      [
+        2000000,
+        0.2
+      ],
+      [
+        2400000,
+        0.25
+      ],
+      [
+        null,
+        0.3
+      ]
+    ],
+    "rebate_income_limit": 1200000,
+    "standard_deduction": 75000,
+    "cess_rate": 0.04,
+    "max_income_supported": 5000000,
+    "valid_until": "2027-03-31",
+    "sources": [
+      {
+        "name": "Filingbase (slabs, rebate, marginal relief, cess examples)",
+        "url": "https://filingbase.in/new-tax-regime-slabs/"
+      },
+      {
+        "name": "TaxBadi (marginal relief)",
+        "url": "https://www.taxbadi.com/tax-slabs-2026-27/"
+      },
+      {
+        "name": "Indian Pay Calculator (4% cess)",
+        "url": "https://www.indianpaycalculator.in/income-tax-slabs"
+      },
+      {
+        "name": "TaxBadi 'Tax at a glance' table (used as golden test values)",
+        "url": "https://www.taxbadi.com/tax-slabs-2026-27/",
+        "type": "secondary"
+      }
+    ]
+  },
+  "old_regime_calculator": {
+    "title": "Old regime tax estimate (tax year 2026-27)",
+    "slabs": {
+      "normal": [
+        [
+          250000,
+          0.0
+        ],
+        [
+          500000,
+          0.05
+        ],
+        [
+          1000000,
+          0.2
+        ],
+        [
+          null,
+          0.3
+        ]
+      ],
+      "senior": [
+        [
+          300000,
+          0.0
+        ],
+        [
+          500000,
+          0.05
+        ],
+        [
+          1000000,
+          0.2
+        ],
+        [
+          null,
+          0.3
+        ]
+      ],
+      "super_senior": [
+        [
+          500000,
+          0.0
+        ],
+        [
+          1000000,
+          0.2
+        ],
+        [
+          null,
+          0.3
+        ]
+      ]
+    },
+    "rebate_income_limit": 500000,
+    "rebate_max": 12500,
+    "standard_deduction": 50000,
+    "cess_rate": 0.04,
+    "max_income_supported": 5000000,
+    "valid_until": "2027-03-31",
+    "sources": [
+      {
+        "name": "ClearTax (old regime slabs, senior limits, ₹50,000 standard deduction)",
+        "url": "https://cleartax.in/s/income-tax-slabs",
+        "type": "secondary"
+      },
+      {
+        "name": "SBI General (old regime table by age, TY 2026-27)",
+        "url": "https://www.sbigeneral.in/blog/general-insurance/general-articles/income-tax-slabs",
+        "type": "secondary"
+      },
+      {
+        "name": "TaxBadi (old regime worked values, used as golden tests)",
+        "url": "https://www.taxbadi.com/tax-slabs-2026-27/",
+        "type": "secondary"
+      },
+      {
+        "name": "TaxGST: 80D / Section 126 limits and ₹2 lakh home loan interest",
+        "url": "https://taxgst.in/tax-deductions-beyond-80c-80d-80ccd/",
+        "type": "secondary"
+      },
+      {
+        "name": "TaxClue: Section 123 and 126 limits",
+        "url": "https://taxclue.in/blog/section-123-126-deductions-80c-80d-income-tax-act-2025",
+        "type": "secondary"
+      },
+      {
+        "name": "ClearTax: home loan interest ₹2 lakh cap, old regime only",
+        "url": "https://cleartax.in/s/home-loan-tax-benefits",
+        "type": "secondary"
+      }
+    ],
+    "deduction_caps": {
+      "_note": "Caps per category for TY 2026-27, old regime. Section numbers for home-loan interest and NPS are omitted on purpose: sources disagree.",
+      "sec123": {
+        "cap": 150000,
+        "label_en": "Section 123 (old 80C)",
+        "label_hi": "सेक्शन 123 (पुराना 80C)"
+      },
+      "nps": {
+        "cap": 50000,
+        "label_en": "extra NPS",
+        "label_hi": "अतिरिक्त NPS"
+      },
+      "health_self": {
+        "cap": 25000,
+        "cap_senior": 50000,
+        "label_en": "health insurance",
+        "label_hi": "हेल्थ इंश्योरेंस"
+      },
+      "health_parents": {
+        "cap": 25000,
+        "cap_senior": 50000,
+        "label_en": "parents' health insurance",
+        "label_hi": "माता-पिता का हेल्थ इंश्योरेंस"
+      },
+      "home_loan_interest": {
+        "cap": 200000,
+        "label_en": "home loan interest (self-occupied)",
+        "label_hi": "होम लोन ब्याज (खुद के रहने वाला घर)"
+      },
+      "hra": {
+        "cap": null,
+        "label_en": "HRA (formula-based, not capped here)",
+        "label_hi": "HRA (फॉर्मूले से, यहाँ सीमा नहीं लगाई)"
+      },
+      "other": {
+        "cap": null,
+        "label_en": "other deductions (not capped here)",
+        "label_hi": "अन्य डिडक्शन (यहाँ सीमा नहीं लगाई)"
+      }
+    }
+  },
+  "hra": {
+    "metro_rate": 0.5,
+    "other_rate": 0.4,
+    "rent_minus_pct": 0.1,
+    "valid_from": "2026-04-01",
+    "valid_until": "2027-03-31",
+    "metro_cities": {
+      "mumbai": [
+        "mumbai",
+        "bombay",
+        "मुंबई"
+      ],
+      "delhi": [
+        "delhi",
+        "new delhi",
+        "दिल्ली"
+      ],
+      "kolkata": [
+        "kolkata",
+        "calcutta",
+        "कोलकाता"
+      ],
+      "chennai": [
+        "chennai",
+        "madras",
+        "चेन्नई"
+      ],
+      "bengaluru": [
+        "bengaluru",
+        "bangalore",
+        "बेंगलुरु",
+        "बेंगलूरु",
+        "बैंगलोर"
+      ],
+      "hyderabad": [
+        "hyderabad",
+        "हैदराबाद"
+      ],
+      "pune": [
+        "pune",
+        "पुणे"
+      ],
+      "ahmedabad": [
+        "ahmedabad",
+        "अहमदाबाद"
+      ]
+    },
+    "sources": [
+      {
+        "name": "TaxGuru: HRA, 8 cities now qualify for 50%",
+        "url": "https://taxguru.in/income-tax/hra-exemption-8-cities-qualify-50-percent-exemption-practical-guide.html",
+        "type": "secondary"
+      },
+      {
+        "name": "TaxFetch: Rule 279, Income-tax Rules 2026 (notified 20 Mar 2026)",
+        "url": "https://www.taxfetchindia.com/blog/taxation-time/hra-exemption-rules-april-2026-new-cities",
+        "type": "secondary"
+      },
+      {
+        "name": "EZHRM: least-of-three formula",
+        "url": "https://ezhrm.in/hra-exemption-2026-metro-cities-ctc-calculator/",
+        "type": "secondary"
+      }
+    ]
+  }
+}

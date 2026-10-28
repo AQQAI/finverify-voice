@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>finverify voice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F2F5F9; --ink:#18233D; --muted:#5A6680; --rule:#CBD4E2;
+  --ok:#1F7A4D; --fix:#A03A2C; --warn:#A8630F; --card:#FFFFFF; --calc:#2B4C8C;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#111827; --ink:#E7ECF5; --muted:#9AA6BF; --rule:#2C3954;
+    --ok:#4CC08A; --fix:#F08A7A; --warn:#E9AE55; --card:#18213A; --calc:#8FB0F0; color-scheme: dark;
+  }
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink)}
+body{font-family:"Mukta","Noto Sans Devanagari",system-ui,sans-serif;font-size:18px;line-height:1.55;
+  padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}
+main{max-width:700px;margin:0 auto;padding:40px 20px 64px}
+h1{font-size:2.1rem;line-height:1.1;margin:0 0 6px;font-weight:700;letter-spacing:-.01em}
+.lede{color:var(--muted);margin:0 0 28px;max-width:56ch}
+.controls{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:20px}
+.mic{width:84px;height:84px;border-radius:50%;border:none;background:var(--ink);color:var(--paper);cursor:pointer;display:grid;place-items:center;flex:none}
+.mic svg{width:34px;height:34px}
+.mic:disabled{opacity:.4;cursor:not-allowed}
+.mic.listening{background:var(--fix);animation:pulse 1.2s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.06)}}
+@media (prefers-reduced-motion: reduce){.mic.listening{animation:none}}
+.lang{display:flex;border:1.5px solid var(--ink);border-radius:999px;overflow:hidden}
+.lang button{border:none;background:transparent;color:var(--ink);font:inherit;padding:6px 16px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.status{color:var(--muted);font-size:.95rem;min-height:1.5em}
+form{display:flex;gap:8px;margin-bottom:12px}
+input{flex:1;font:inherit;padding:10px 14px;border:1.5px solid var(--rule);border-radius:10px;background:var(--card);color:var(--ink);min-width:0}
+form button,.chip{font:inherit;font-weight:600;padding:10px 18px;border-radius:10px;border:none;background:var(--ink);color:var(--paper);cursor:pointer}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.chip{background:transparent;color:var(--ink);border:1.5px solid var(--rule);font-weight:400;font-size:.92rem;padding:4px 12px}
+:focus-visible{outline:3px solid var(--warn);outline-offset:2px}
+.turn{border-top:1.5px solid var(--rule);padding:22px 0}
+.q{color:var(--muted);margin:0 0 6px}
+.badge{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:1px 10px;border-radius:999px;border:1.5px solid;margin-bottom:8px}
+.badge.style{color:var(--calc)} .badge.fact{color:var(--ok)} .badge.tax_estimate{color:var(--calc)} .badge.general{color:var(--warn)} .badge.no_answer{color:var(--muted)} .badge.out_of_scope{color:var(--muted)}
+.a{font-size:1.22rem;line-height:1.6;margin:0}
+.panel{margin-top:12px;font-size:.93rem;border-left:3px solid var(--rule);padding:2px 0 2px 14px}
+.panel h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:8px 0 4px}
+.panel ul{margin:0;padding-left:18px}
+.panel a{color:inherit}
+table{border-collapse:collapse;font-variant-numeric:tabular-nums}
+td{padding:2px 16px 2px 0}
+td:last-child{text-align:right}
+.stale{color:var(--fix);font-weight:600}
+.meta{color:var(--muted);font-size:.85rem;margin:8px 0 0}
+.err{color:var(--fix)}
+.replay{font:inherit;font-size:.9rem;background:none;border:1.5px solid var(--rule);color:var(--ink);border-radius:8px;padding:2px 10px;margin-top:10px;cursor:pointer}
+.stylecard{border:1.5px solid var(--rule);border-radius:14px;background:var(--card);padding:18px 20px;margin:0 0 28px}
+.stylecard h2{font-size:1.15rem;margin:0 0 4px}
+.stylecard .why{color:var(--muted);font-size:.9rem;margin:0 0 14px}
+.sq{margin:12px 0}
+.sq p{margin:0 0 6px}
+.sq .opts{display:flex;gap:8px;flex-wrap:wrap}
+.sq button{font:inherit;padding:6px 14px;border-radius:999px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.sq button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.stylebar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;color:var(--muted);font-size:.9rem;margin:-18px 0 28px}
+.linkbtn{font:inherit;background:none;border:none;color:var(--ink);text-decoration:underline;cursor:pointer;padding:0}
+.convo{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:0 0 20px}
+.primary{font:inherit;font-weight:700;padding:12px 20px;border-radius:12px;border:none;background:var(--ok);color:#fff;cursor:pointer}
+.toggle{display:flex;gap:8px;align-items:center;font-size:.95rem;color:var(--muted)}
+.callform{border:1.5px solid var(--rule);border-radius:14px;background:var(--card);padding:16px 18px;margin:0 0 24px}
+.callform label{display:block;margin:8px 0}
+.callform input[type=tel]{width:100%;max-width:280px}
+.badge.checkup{color:var(--ok)}
+.signs{border:1.5px dashed var(--rule);border-radius:14px;padding:16px 18px;margin:0 0 24px}
+.signs summary{cursor:pointer;font-weight:700}
+.signs .demo{color:var(--warn);font-size:.9rem;margin:8px 0}
+.cam{position:relative;width:100%;max-width:420px;aspect-ratio:4/3;background:#000;border-radius:10px;overflow:hidden;margin:10px 0}
+.cam video,.cam canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cam video{transform:scaleX(-1)}
+.seeing{font-size:1.4rem;font-weight:700;min-height:1.6em}
+.steady{height:6px;background:var(--rule);border-radius:3px;max-width:420px;overflow:hidden}
+.steady i{display:block;height:100%;width:0;background:var(--ok);transition:width .1s}
+.teach{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.teach button{font:inherit;padding:6px 12px;border-radius:999px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.teach button.done{border-color:var(--ok);color:var(--ok)}
+footer{margin-top:40px;color:var(--muted);font-size:.9rem}
+footer a{color:inherit}
+</style>
+</head>
+<body>
+<main>
+  <h1>Talk about your money. Hear only numbers with a source.</h1>
+  <p class="lede">Ask about savings scheme rates, tax slabs, deductions, your tax, or which regime suits you, in Hindi or English. Every figure comes from a dated, sourced record or an exact calculation. If a number can’t be verified, it isn’t spoken.</p>
+
+  <div class="controls">
+    <button class="mic" id="mic" aria-label="Start speaking">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-2.08A7 7 0 0 0 19 12h-2Z"/></svg>
+    </button>
+    <div class="lang" role="group" aria-label="Language">
+      <button data-lang="en" aria-pressed="true">English</button>
+      <button data-lang="hi" aria-pressed="false">हिन्दी</button>
+    </div>
+    <div class="status" id="status" aria-live="polite">Tap the mic and ask your question.</div>
+  </div>
+
+  <section class="stylecard" id="stylecard" hidden aria-labelledby="stitle">
+    <h2 id="stitle">How should I talk to you?</h2>
+    <p class="why" id="swhy">Three quick questions. This changes my tone and speed, never the numbers.</p>
+    <div id="squestions"></div>
+    <button class="linkbtn" id="sdone">Done</button>
+  </section>
+  <div class="stylebar" id="stylebar" hidden><span id="stylelabel"></span><button class="linkbtn" id="schange">Change how I talk</button></div>
+  <div class="stylebar" id="voicebar" hidden>
+    <label for="voicesel" id="voicelabel">Voice</label>
+    <select id="voicesel" style="font:inherit;max-width:260px"></select>
+    <button class="linkbtn" id="voicetest">Test</button>
+  </div>
+
+  <div class="convo">
+    <button class="primary" id="checkup">Start tax checkup</button>
+    <label class="toggle"><input type="checkbox" id="handsfree"> <span id="hflabel">Hands-free, like a phone call</span></label>
+  </div>
+  <section class="callform" id="callform" hidden aria-labelledby="ctitle">
+    <h2 id="ctitle" style="font-size:1.1rem;margin:0 0 6px">Get a call</h2>
+    <label>Phone number <input type="tel" id="cphone" placeholder="+91 98765 43210" autocomplete="tel"></label>
+    <label><input type="radio" name="cwhen" value="now" checked> Call me now</label>
+    <label><input type="radio" name="cwhen" value="rates_change"> Call me when the rates change</label>
+    <label><input type="checkbox" id="cconsent"> I agree to receive this call.</label>
+    <button class="primary" id="cgo">Request call</button> <button class="linkbtn" id="ccancel">Cancel</button>
+    <p class="meta" id="cstatus" aria-live="polite"></p>
+  </section>
+
+  <details class="signs" id="signs">
+    <summary id="stitle2">Hand-sign demo (beta)</summary>
+    <p class="demo" id="sdemo">Demo only: hand signs you teach it, for yes / no / repeat / stop / start checkup. This is not Indian Sign Language translation. Still hand shapes only; amounts still need speaking or typing.</p>
+    <button class="primary" id="camgo">Start camera</button> <button class="linkbtn" id="camstop" hidden>Stop camera</button>
+    <div class="cam" id="camwrap" hidden><video id="camvideo" playsinline muted></video><canvas id="camcanvas"></canvas></div>
+    <div class="seeing" id="seeing" aria-live="polite"></div>
+    <div class="steady" aria-hidden="true"><i id="steadybar"></i></div>
+    <p class="meta" id="teachhint">Teach each sign once: press its button and hold the hand shape still for about 2 seconds.</p>
+    <div class="teach" id="teachbtns"></div>
+    <button class="linkbtn" id="forget">Forget my signs</button>
+  </details>
+
+  <form id="typed">
+    <input id="qtext" placeholder="Or type a question" aria-label="Type a question">
+    <button type="submit">Ask</button>
+  </form>
+  <div class="chips" id="chips"></div>
+
+  <section id="log" aria-live="polite"></section>
+
+  <footer>Every figure this assistant can say, with its sources: <a href="/facts" target="_blank" rel="noopener">view the fact list</a>. Information only, not tax or investment advice.</footer>
+</main>
+
+<script>
+let lang = "en", useSarvam = false, lastTurn = null;
+let style = null, styleQuestions = [], dialogState = null, handsFree = false, listenFn = null;
+const STYLE_KEY = "fv-style";
+try { style = JSON.parse(localStorage.getItem(STYLE_KEY) || "null"); } catch(e) { style = null; }
+function saveStyle(){ try { localStorage.setItem(STYLE_KEY, JSON.stringify(style)); } catch(e) {} }
+const STYLE_LABEL = {lively:{en:"lively",hi:"जोश वाली"}, calm:{en:"calm",hi:"शांत"}, brief:{en:"short answers",hi:"छोटे जवाब"},
+  standard:{en:"normal detail",hi:"सामान्य"}, detailed:{en:"with working",hi:"पूरा हिसाब"}, friendly:{en:"friendly",hi:"दोस्ताना"},
+  neutral:{en:"neutral",hi:"सामान्य"}, formal:{en:"professional",hi:"प्रोफेशनल"}};
+function renderStyleBar(){
+  const bar = $("#stylebar");
+  if (!style){ bar.hidden = true; return; }
+  bar.hidden = false;
+  $("#stylelabel").textContent = (lang === "hi" ? "बात करने का तरीका: " : "Talking style: ") +
+    ["energy","detail","warmth"].map(k => STYLE_LABEL[style[k]][lang]).join(" · ");
+  $("#schange").textContent = lang === "hi" ? "तरीका बदलें" : "Change how I talk";
+}
+function renderStyleCard(){
+  $("#stitle").textContent = lang === "hi" ? "मैं आपसे कैसे बात करूँ?" : "How should I talk to you?";
+  $("#swhy").textContent = lang === "hi" ? "तीन छोटे सवाल। इससे मेरा लहजा और रफ़्तार बदलती है, आंकड़े कभी नहीं।"
+                                         : "Three quick questions. This changes my tone and speed, never the numbers.";
+  $("#sdone").textContent = lang === "hi" ? "हो गया" : "Done";
+  const cur = style || {energy:"calm", detail:"standard", warmth:"neutral"};
+  $("#squestions").innerHTML = styleQuestions.map(q => `<div class="sq"><p>${esc(q[lang])}</p><div class="opts" role="group">` +
+    q.options.map(o => `<button data-k="${q.key}" data-v="${o.value}" aria-pressed="${cur[q.key] === o.value}">${esc(o[lang])}</button>`).join("") +
+    `</div></div>`).join("");
+  document.querySelectorAll(".sq button").forEach(b => b.onclick = () => {
+    style = {...cur, ...(style || {}), [b.dataset.k]: b.dataset.v};
+    saveStyle(); renderStyleCard(); renderStyleBar();
+  });
+}
+function openStyleCard(){ $("#stylecard").hidden = false; renderStyleCard(); }
+const $ = s => document.querySelector(s);
+const statusEl = $("#status"), micBtn = $("#mic"), log = $("#log");
+const player = new Audio();
+const ROUTE = {checkup:"Tax checkup", fact:"Sourced fact", tax_estimate:"Exact calculation", general:"General answer · numbers checked", no_answer:"No verified figure", out_of_scope:"Outside what I do", style:"Talking style updated"};
+const EXAMPLES = {
+  en: ["Start tax checkup", "What is the PPF interest rate?", "How much tax on a salary of 15 lakh?", "Which regime is better for a salary of 15 lakh?", "Is 12 lakh tax free in the new regime?", "When is TDS cut on FD interest?", "Basic 6 lakh, HRA 3.6 lakh, rent 40,000 a month in Pune. How much HRA exemption?"],
+  hi: ["टैक्स चेकअप", "PPF में कितना ब्याज मिलता है?", "मेरी सैलरी 15 लाख है, कितना टैक्स लगेगा?", "15 लाख सैलरी पर कौन सी व्यवस्था बेहतर है?", "सुकन्या समृद्धि की ब्याज दर क्या है?", "FD ब्याज पर TDS कब कटता है?", "बेसिक 6 लाख, एचआरए 3.6 लाख, किराया 40,000 महीना, पुणे में। HRA छूट कितनी है?"]
+};
+
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const inr = n => "₹" + Number(n).toLocaleString("en-IN");
+
+function renderChips(){
+  $("#chips").innerHTML = EXAMPLES[lang].map(q => `<button class="chip">${esc(q)}</button>`).join("");
+  document.querySelectorAll(".chip").forEach(b => b.onclick = () => ask(b.textContent));
+}
+document.querySelectorAll(".lang button").forEach(b => b.onclick = () => {
+  lang = b.dataset.lang;
+  document.querySelectorAll(".lang button").forEach(x => x.setAttribute("aria-pressed", x === b));
+  renderChips(); renderStyleBar(); if (!$("#stylecard").hidden) renderStyleCard();
+  $("#checkup").textContent = lang === "hi" ? "टैक्स चेकअप शुरू करें" : "Start tax checkup";
+  renderVoicePicker();
+  $("#hflabel").textContent = lang === "hi" ? "हैंड्स-फ्री, फ़ोन कॉल की तरह" : "Hands-free, like a phone call";
+});
+renderChips();
+$("#schange").onclick = openStyleCard;
+$("#sdone").onclick = () => { if (!style) { style = {energy:"calm", detail:"standard", warmth:"neutral"}; saveStyle(); }
+  $("#stylecard").hidden = true; renderStyleBar(); };
+fetch("/style/questions").then(r => r.json()).then(d => {
+  styleQuestions = d.questions;
+  if (!style) openStyleCard(); else renderStyleBar();
+}).catch(() => {});
+
+// Pick the best browser voice: right language first, then higher-quality voices
+// (Google network voices, macOS "Premium"/"Enhanced", Siri). The user can override by ear.
+const VOICE_KEY = "fv-voice";
+function voiceScore(v, l){
+  const want = l === "hi" ? "hi" : "en";
+  const lang = (v.lang || "").toLowerCase();
+  if (!lang.startsWith(want)) return -1;
+  let sc = 0;
+  if (l === "hi" && lang === "hi-in") sc += 5;
+  if (l === "en" && lang === "en-in") sc += 5; else if (l === "en" && (lang === "en-gb" || lang === "en-us")) sc += 2;
+  const n = v.name.toLowerCase();
+  if (n.includes("google")) sc += 4;
+  if (n.includes("premium")) sc += 4;
+  if (n.includes("enhanced")) sc += 3;
+  if (n.includes("siri")) sc += 3;
+  if (/novelty|whisper|bells|bubbles|cellos|zarvox|trinoids|bad news|good news|jester|organ|boing|albert|superstar|wobble|grandma|grandpa|rocko|shelley|flo|eddy|reed|sandy/.test(n)) sc -= 10;
+  return sc;
+}
+function voicesFor(l){
+  return speechSynthesis.getVoices().map(v => [voiceScore(v, l), v]).filter(([sc]) => sc >= 0)
+    .sort((a, b) => b[0] - a[0]).map(([, v]) => v);
+}
+function chosenVoice(l){
+  const list = voicesFor(l);
+  let saved = null; try { saved = JSON.parse(localStorage.getItem(VOICE_KEY) || "{}")[l]; } catch(e) {}
+  return list.find(v => v.name === saved) || list[0] || null;
+}
+function renderVoicePicker(){
+  if (useSarvam || !("speechSynthesis" in window)) { $("#voicebar").hidden = true; return; }
+  const list = voicesFor(lang);
+  if (!list.length) { $("#voicebar").hidden = true; return; }
+  const cur = chosenVoice(lang);
+  $("#voicesel").innerHTML = list.map(v => `<option${cur && v.name === cur.name ? " selected" : ""}>${esc(v.name)}</option>`).join("");
+  $("#voicelabel").textContent = lang === "hi" ? "आवाज़" : "Voice";
+  $("#voicebar").hidden = false;
+}
+if ("speechSynthesis" in window){
+  speechSynthesis.onvoiceschanged = renderVoicePicker;
+  $("#voicesel").onchange = e => {
+    let all = {}; try { all = JSON.parse(localStorage.getItem(VOICE_KEY) || "{}"); } catch(err) {}
+    all[lang] = e.target.value; try { localStorage.setItem(VOICE_KEY, JSON.stringify(all)); } catch(err) {}
+  };
+  $("#voicetest").onclick = () => browserSpeak(lang === "hi"
+    ? "नमस्ते। PPF की ब्याज दर 7.1 प्रतिशत सालाना है।" : "Hello. The PPF interest rate is 7.1 percent a year.", lang, {pace: 1});
+}
+
+function browserSpeak(text, l, voice){
+  if (!("speechSynthesis" in window)) return;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  // Browser voices distort when sped up; keep them close to natural speed.
+  if (voice && voice.pace) u.rate = Math.max(0.9, Math.min(1.05, voice.pace));
+  u.onend = afterSpeaking;
+  u.lang = l === "hi" ? "hi-IN" : "en-IN";
+  const v = chosenVoice(l);
+  if (v) { u.voice = v; u.lang = v.lang; }
+  speechSynthesis.speak(u);
+}
+function afterSpeaking(){ if (handsFree && listenFn) setTimeout(listenFn, 350); }
+async function speak(text, l, voice){
+  if (useSarvam){
+    try{
+      const r = await fetch("/tts", {method:"POST", headers:{"Content-Type":"application/json"},
+        body: JSON.stringify({text, lang:l, pace: voice && voice.pace, temperature: voice && voice.temperature})});
+      const d = await r.json(); if (!r.ok) throw new Error(d.detail);
+      player.src = "data:audio/wav;base64," + d.audio_b64; player.onended = afterSpeaking; await player.play(); return;
+    }catch(e){ console.warn("Sarvam TTS failed, using browser voice:", e); }
+  }
+  browserSpeak(text, l, voice);
+}
+function stopSpeaking(){ player.pause(); if ("speechSynthesis" in window) speechSynthesis.cancel(); }
+
+function details(d){
+  let h = "";
+  if (d.facts && d.facts.length){
+    h += `<div class="panel"><h3>Sources</h3><ul>` + d.facts.map(f =>
+      `<li>${esc(f.title)}: valid until ${esc(f.valid_until)}${f.stale ? ` <span class="stale">(expired)</span>` : ""}${f.confidence === "single-source" ? " · single source" : ""}<br>` +
+      f.sources.map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${s.type === "primary" ? "<b>Official:</b> " : ""}${esc(s.name)}</a>`).join(" · ") + `</li>`).join("") + `</ul></div>`;
+  }
+  if (d.calc){
+    const c = d.calc, n = c.new, o = c.old, both = d.tax_mode === "compare";
+    const showNew = d.tax_mode !== "old", showOld = d.tax_mode !== "new";
+    const col = (r, k, neg) => `<td>${neg && r[k] ? "−" : ""}${inr(r[k])}</td>`;
+    const head = `<tr><td></td>${showNew ? "<td><b>New regime</b></td>" : ""}${showOld ? "<td><b>Old regime</b></td>" : ""}</tr>`;
+    const row = (label, k, neg) => `<tr><td>${label}</td>${showNew ? col(n, k, neg) : ""}${showOld ? col(o, k, neg) : ""}</tr>`;
+    const dedRow = c.deductions && showOld ? `<tr><td>Your deductions (after limits)</td>${showNew ? "<td>not allowed</td>" : ""}<td>−${inr(c.deductions)}</td></tr>` : "";
+    const items = (c.deduction_items || []);
+    const dedList = items.length ? `<h3>Deductions you mentioned (old regime)</h3><ul>` + items.map(i =>
+      `<li>${esc(i.label_en)}: ${inr(i.claimed)}${i.allowed < i.claimed ? ` → counted ${inr(i.allowed)} <span class="stale">(legal limit)</span>` : ""}</li>`).join("") + `</ul>` : "";
+    const who = {senior: " · senior citizen slabs", super_senior: " · super senior slabs"}[c.age_group] || "";
+    h += `<div class="panel"><h3>Calculation · tax year 2026-27${who}</h3><table>${head}
+      <tr><td>Income</td>${showNew ? `<td>${inr(c.gross)}</td>` : ""}${showOld ? `<td>${inr(c.gross)}</td>` : ""}</tr>
+      ${c.salaried ? row("Standard deduction", "standard_deduction", true) : ""}${dedRow}
+      ${row("Taxable income", "taxable")}${row("Tax by slabs", "slab_tax")}
+      ${row("After rebate / relief", "after_rebate")}${row("Cess (4%)", "cess")}
+      <tr><td><b>Estimated tax</b></td>${showNew ? `<td><b>${inr(n.total)}</b></td>` : ""}${showOld ? `<td><b>${inr(o.total)}</b></td>` : ""}</tr></table>
+      ${both && c.breakeven_deductions ? `<p class="meta">Old regime wins only if deductions exceed <b>${inr(c.breakeven_deductions)}</b>.</p>` : ""}
+      ${dedList}
+      <p class="meta">` + (d.sources||[]).map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>`).join(" · ") + `</p></div>`;
+  }
+  if (d.hra && d.hra.exempt !== undefined){
+    const x = d.hra, pct = Math.round(x.pct * 100);
+    const row = (label, v, min) => `<tr><td>${label}</td><td>${min ? "<b>" : ""}${inr(v)}${min ? "</b> ← lowest" : ""}</td></tr>`;
+    const low = Math.min(x.actual_hra, x.pct_of_salary, x.rent_minus_10);
+    h += `<div class="panel"><h3>HRA exemption · old regime · tax year 2026-27</h3><table>
+      ${row("HRA you receive", x.actual_hra, x.actual_hra === low)}
+      ${row(`${pct}% of basic + DA (${esc(x.city)}${x.metro ? ", 50% city" : ""})`, x.pct_of_salary, x.pct_of_salary === low && x.actual_hra !== low)}
+      ${row("Rent minus 10% of basic + DA", x.rent_minus_10, x.rent_minus_10 === low && x.actual_hra !== low && x.pct_of_salary !== low)}
+      <tr><td><b>Exempt</b></td><td><b>${inr(x.exempt)}</b></td></tr>
+      <tr><td>Taxable HRA</td><td>${inr(x.taxable_hra)}</td></tr></table>
+      <p class="meta">` + (d.sources||[]).map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>`).join(" · ") + `</p></div>`;
+  }
+  if (d.figures && d.figures.length){
+    h += `<div class="panel"><h3>Numbers in the AI’s draft</h3><ul>` + d.figures.map(f =>
+      `<li>${esc(f.text)}: ${esc(f.status.replace("_"," "))}${f.correct ? " → " + esc(f.correct) : ""}</li>`).join("") + `</ul></div>`;
+  }
+  return h;
+}
+
+window.fvGetLang = () => lang;
+async function ask(question, shown){
+  if (!question.trim()) return;
+  stopSpeaking();
+  statusEl.textContent = "Finding a verified answer…";
+  const turn = document.createElement("article");
+  turn.className = "turn";
+  turn.innerHTML = `<p class="q">${esc(shown || question)}</p><p class="a">…</p>`;
+  log.prepend(turn);
+  try{
+    const r = await fetch("/ask", {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({question, lang, context: lastTurn, style, dialog_state: dialogState})});
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.detail || "The server returned an error.");
+    turn.innerHTML = `<p class="q">${esc(shown || question)}</p>
+      <span class="badge ${d.route}">${ROUTE[d.route]}</span>
+      <p class="a">${esc(d.spoken)}</p>${details(d)}
+      <button class="replay">Play again</button>
+      <p class="meta">Answered in ${d.ms} ms</p>`;
+    const say = d.speech || d.spoken;
+    turn.querySelector(".replay").onclick = () => speak(say, d.lang, d.voice);
+    if (d.route === "checkup"){ dialogState = d.dialog_done ? null : d.dialog_state; if (d.action === "show_call_form") openCallForm(); }
+    else dialogState = null;
+    if (d.route === "style"){ style = d.style; saveStyle(); renderStyleBar(); }
+    else if (d.route !== "checkup") lastTurn = {question: d.question, route: d.route, calc: d.calc, tax_mode: d.tax_mode};
+    statusEl.textContent = "Done. Ask a follow-up like “and for 20 lakh?”";
+    speak(say, d.lang, d.voice);
+  }catch(e){
+    turn.querySelector(".a").innerHTML = `<span class="err">${esc(e.message)}</span>`;
+    statusEl.textContent = "Something went wrong. See the message below the question.";
+  }
+}
+$("#typed").onsubmit = e => { e.preventDefault(); const q = $("#qtext").value; $("#qtext").value = ""; ask(q); };
+
+let recorder = null, chunks = [];
+async function sarvamToggle(){
+  if (recorder && recorder.state === "recording"){ recorder.stop(); return; }
+  stopSpeaking();
+  try{
+    const stream = await navigator.mediaDevices.getUserMedia({audio:true});
+    recorder = new MediaRecorder(stream); chunks = [];
+    recorder.ondataavailable = e => e.data.size && chunks.push(e.data);
+    recorder.onstop = async () => {
+      stream.getTracks().forEach(t => t.stop());
+      micBtn.classList.remove("listening"); micBtn.setAttribute("aria-label", "Start speaking");
+      statusEl.textContent = "Transcribing…";
+      const fd = new FormData();
+      fd.append("file", new Blob(chunks, {type: recorder.mimeType || "audio/webm"}), "question.webm");
+      fd.append("lang", lang);
+      try{
+        const r = await fetch("/stt", {method:"POST", body: fd}); const d = await r.json();
+        if (!r.ok) throw new Error(d.detail);
+        if (!d.transcript.trim()) throw new Error("Didn’t catch that. Try again a bit closer to the mic.");
+        ask(d.transcript);
+      }catch(e){ statusEl.textContent = e.message; }
+    };
+    recorder.start();
+    micBtn.classList.add("listening"); micBtn.setAttribute("aria-label", "Stop and send");
+    statusEl.textContent = handsFree ? "Listening… I’ll stop when you pause." : "Listening… tap again when you’re done.";
+    // Simple voice-activity detection: stop ~1.3 s after speech ends (or after 12 s).
+    try{
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const an = ctx.createAnalyser(); an.fftSize = 1024;
+      ctx.createMediaStreamSource(stream).connect(an);
+      const buf = new Float32Array(an.fftSize);
+      let heard = false, quietSince = 0; const t0 = performance.now();
+      const tick = () => {
+        if (!recorder || recorder.state !== "recording"){ ctx.close(); return; }
+        an.getFloatTimeDomainData(buf);
+        const rms = Math.sqrt(buf.reduce((a, v) => a + v * v, 0) / buf.length);
+        const now = performance.now();
+        if (rms > 0.02){ heard = true; quietSince = 0; } else if (heard && !quietSince) quietSince = now;
+        if ((heard && quietSince && now - quietSince > 1300) || now - t0 > 12000){ recorder.stop(); ctx.close(); return; }
+        requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }catch(e){ /* no VAD: tap to stop */ }
+  }catch(e){ statusEl.textContent = "Mic permission was blocked. Allow the microphone and try again."; }
+}
+function setupBrowserMic(){
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR){ micBtn.disabled = true; statusEl.textContent = "Voice input needs Chrome or Edge, or a Sarvam key on the server. You can still type."; return; }
+  const rec = new SR(); rec.interimResults = false; rec.maxAlternatives = 1;
+  let listening = false;
+  micBtn.onclick = () => { if (listening){ rec.stop(); return; } rec.lang = lang === "hi" ? "hi-IN" : "en-IN"; stopSpeaking(); rec.start(); };
+  listenFn = () => { if (!listening){ rec.lang = lang === "hi" ? "hi-IN" : "en-IN"; try { rec.start(); } catch(e){} } };
+  rec.onstart = () => { listening = true; micBtn.classList.add("listening"); statusEl.textContent = "Listening…"; };
+  rec.onend = () => { listening = false; micBtn.classList.remove("listening"); };
+  rec.onerror = e => { statusEl.textContent = `Mic error: ${e.error}. Check mic permission and try again.`; };
+  rec.onresult = e => ask(e.results[0][0].transcript);
+}
+$("#checkup").onclick = () => { dialogState = null; ask(lang === "hi" ? "टैक्स चेकअप" : "start tax checkup"); };
+$("#handsfree").onchange = e => { handsFree = e.target.checked; if (handsFree && listenFn) listenFn(); };
+function openCallForm(){ $("#callform").hidden = false; $("#cstatus").textContent = ""; $("#cphone").focus(); }
+$("#ccancel").onclick = () => { $("#callform").hidden = true; };
+$("#cgo").onclick = async () => {
+  const when = document.querySelector('input[name="cwhen"]:checked').value;
+  $("#cstatus").textContent = "Requesting…";
+  try{
+    const r = await fetch("/call", {method:"POST", headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({phone: $("#cphone").value, when, consent: $("#cconsent").checked, lang, style})});
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.detail);
+    $("#cstatus").textContent = d.scheduled_at ? `Done. I’ll call you on ${d.scheduled_at.slice(0,10)}.` : "Done. Your phone should ring shortly.";
+  }catch(e){ $("#cstatus").textContent = e.message; }
+};
+
+fetch("/health").then(r => r.json()).then(h => {
+  useSarvam = !!h.sarvam_speech && !!window.MediaRecorder;
+  renderVoicePicker();
+  if (useSarvam){ micBtn.onclick = sarvamToggle; listenFn = () => { if (!recorder || recorder.state !== "recording") sarvamToggle(); }; }
+  else setupBrowserMic();
+}).catch(() => setupBrowserMic());
+</script>
+<script type="module">
+import * as signs from "/static/signs.js";
+const $ = s => document.querySelector(s);
+const L = () => window.fvGetLang();
+function renderTeach(){
+  const t = signs.taught();
+  $("#teachbtns").innerHTML = signs.SIGNS.map(s =>
+    `<button data-id="${s.id}" class="${t[s.id] ? "done" : ""}">${t[s.id] ? "✓ " : ""}${L() === "hi" ? s.hi : s.en}</button>`).join("");
+  document.querySelectorAll("#teachbtns button").forEach(b => b.onclick = () => {
+    $("#seeing").textContent = L() === "hi" ? "हाथ का इशारा स्थिर रखें…" : "Hold the sign still…";
+    setTimeout(() => signs.teach(b.dataset.id), 800);            // a moment to get the hand in place
+  });
+}
+function status(st){
+  if (st.loading) $("#seeing").textContent = L() === "hi" ? "कैमरा और हैंड-ट्रैकर लोड हो रहे हैं…" : "Loading camera and hand tracker…";
+  if (st.ready){ $("#seeing").textContent = L() === "hi" ? "तैयार। एक इशारा सिखाइए या दिखाइए।" : "Ready. Teach a sign, or show one you taught."; }
+  if (st.teaching){ $("#steadybar").style.width = Math.round(st.progress * 100) + "%"; }
+  if (st.taught){ renderTeach(); $("#steadybar").style.width = "0%";
+    $("#seeing").textContent = (L() === "hi" ? "सीख लिया: " : "Learned: ") + signs.SIGNS.find(s => s.id === st.taught)[L() === "hi" ? "hi" : "en"]; }
+  if ("seeing" in st){
+    const sg = signs.SIGNS.find(s => s.id === st.seeing);
+    $("#seeing").textContent = sg ? (L() === "hi" ? "दिख रहा है: " : "I see: ") + (L() === "hi" ? sg.hi : sg.en) : "";
+    $("#steadybar").style.width = Math.round((st.steady || 0) * 100) + "%";
+  }
+}
+function fired(sg){
+  const say = sg.say[L()] || sg.say.en;
+  window.ask(say, "🤟 " + (L() === "hi" ? sg.hi : sg.en));
+}
+$("#camgo").onclick = async () => {
+  $("#camwrap").hidden = false; $("#camgo").hidden = true; $("#camstop").hidden = false;
+  try { await signs.start($("#camvideo"), $("#camcanvas"), { onSign: fired, onStatus: status }); }
+  catch(e){ $("#seeing").textContent = (L() === "hi" ? "कैमरा शुरू नहीं हुआ: " : "Couldn't start the camera: ") + e.message;
+            $("#camgo").hidden = false; $("#camstop").hidden = true; }
+};
+$("#camstop").onclick = () => { signs.stop(); $("#camwrap").hidden = true; $("#camgo").hidden = false; $("#camstop").hidden = true; $("#seeing").textContent = ""; };
+$("#forget").onclick = () => { signs.forget(); renderTeach(); };
+$("#signs").addEventListener("toggle", renderTeach);
+renderTeach();
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+# One per line, Hindi or English. Gaps (no_answer) show which facts to add next.
+What is the PPF interest rate?
+What is the maximum deposit in PPF?
+Sukanya Samriddhi interest rate?
+SCSS rate?
+NSC interest rate?
+KVP rate?
+Is 12 lakh income tax free in new regime?
+What is the standard deduction?
+New tax regime slabs?
+What is the 80C limit?
+Extra NPS deduction?
+Old regime rebate limit?
+How much tax on salary 15 lakh?
+How much tax on salary 25 lakh?
+What is the repo rate?
+What is the TDS rate on FD interest?
+PPF में कितना ब्याज मिलता है?
+सुकन्या समृद्धि की ब्याज दर क्या है?
+सीनियर सिटीजन सेविंग स्कीम की ब्याज दर क्या है?
+नई टैक्स व्यवस्था में कितनी आय तक टैक्स नहीं लगता?
+मेरी सैलरी 18 लाख है, कितना टैक्स लगेगा?
+80C की सीमा क्या है?
+Which regime is better for a salary of 15 lakh?
+Salary 18 lakh with 80C 1.5 lakh and home loan interest 2 lakh, which regime is better?
+I am 65, pension 9 lakh, compare old and new regime
+15 लाख सैलरी पर कौन सी व्यवस्था बेहतर है?
+How much tax in old regime on salary 12 lakh with deductions of 2 lakh?
+Basic 6 lakh, HRA 3.6 lakh, rent 40,000 a month in Pune. How much HRA exemption?
+Which cities get 50% HRA?
+बेसिक 6 लाख, एचआरए 3.6 लाख, किराया 40,000 महीना, पुणे में। HRA छूट कितनी है?

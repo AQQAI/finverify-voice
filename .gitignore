@@ -1,0 +1,11 @@
+# secrets: never commit these
+.env
+*.env
+# python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+# local output
+eval_results.csv
+.DS_Store
